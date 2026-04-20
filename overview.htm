@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Knowledge Sharing System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+            max-width: 900px;
+        }
+        h2, h3 {
+            margin-top: 1.5em;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            overflow-x: auto;
+        }
+        hr {
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+
+<p>I've been looking for a way to share knowledge more consistently with my peers—without it becoming just another task on my plate.</p>
+
+<p>So I built a system:</p>
+
+<ul>
+    <li>📚 I save interesting articles to a GitHub repo and label them "unshared".</li>
+    <li>🔄 A Power Automate cloud flow runs daily, picks a random article, and triggers a desktop flow</li>
+    <li>✍️ The flow updates my Outlook signature with that day's article link</li>
+    <li>💌 Every email I send now includes the article link + a note: "I really enjoyed this and I think you will too!"</li>
+</ul>
+
+<p>Here's the secret sauce:</p>
+
+<hr>
+
+<h2>The Two Pieces (Cloud vs Desktop)</h2>
+
+<h3><strong>Cloud Flow</strong> (Runs in your web browser at make.powerautomate.com)</h3>
+
+<p>This is the "orchestrator" It:</p>
+
+<ul>
+    <li>Runs on a schedule (5 AM every day)</li>
+    <li>Talks to GitHub to fetch an article</li>
+    <li>Tells your computer to update the signature file</li>
+    <li>Marks the article as "shared"</li>
+</ul>
+
+<h3><strong>Desktop Flow</strong> (Runs on your PC via Power Automate Desktop)</h3>
+
+<p>This is the "worker" It:</p>
+
+<ul>
+    <li>Receives instructions from the cloud flow</li>
+    <li>Opens your Roaming Outlook signature file</li>
+    <li>Removes yesterday's article link</li>
+    <li>Inserts today's article link</li>
+    <li>Saves the file</li>
+</ul>
+
+<p>Think of it like an assistant sitting at your computer who reads your instructions and manually edits a file.</p>
+
+<hr>
+
+<h2>How They Work Together</h2>
+
+<pre>
+Cloud Flow (5 AM)
+    ↓
+1. Check GitHub for unshared articles
+    ↓
+2. Extract article URL and title
+    ↓
+3. Remove "unshared" label, add "shared" label
+    ↓
+4. Pass the URL and title to Desktop Flow
+    ↓
+Desktop Flow (on your PC)
+    ↓
+5. Read your signature file from disk
+    ↓
+6. Remove old article block (between HTML comment markers)
+    ↓
+7. Insert new article block with today's URL
+    ↓
+8. Save the file
+    ↓
+Done! Your next email will include the new article.
+</pre>
+
+<hr>
+
+<h2>The Three Key Technologies</h2>
+
+<h3><strong>GitHub Repository Issues = Your Article Library</strong></h3>
+
+<p>Each article you want to share becomes a GitHub "Issue" in your repo.</p>
+
+<ul>
+    <li><strong>Issue Title</strong>: The article headline (clickable link text)</li>
+    <li><strong>Issue Body</strong>: Just the article URL (nothing else)</li>
+    <li><strong>Issue Label "unshared"</strong>: Marks articles you haven't shared yet</li>
+    <li><strong>Issue Label "shared"</strong>: Marks articles that have already been shared.</li>
+</ul>
+
+<p>Example:</p>
+
+<pre>
+Title: "Why Remote Work Is Here to Stay"
+Body: https://example.com/remote-work-article
+Label: [unshared]
+</pre>
+
+<p>Once shared, the label changes to [shared] and the flow won't pick it again.</p>
+
+<h3><strong>Cloud Flow = The Scheduler & GitHub Coordinator</strong></h3>
+
+<p>Built in make.powerautomate.com, this flow:</p>
+
+<ol>
+    <li>Waits for the scheduled time (5 AM daily)</li>
+    <li>Calls GitHub's API to say: "Give me one open issue with the 'unshared' label, oldest first"</li>
+    <li>GitHub sends back the issue data (number, title, URL)</li>
+    <li>The flow reads that data</li>
+    <li>The flow calls GitHub again to remove the "unshared" label</li>
+    <li>The flow calls GitHub again to add the "shared" label</li>
+    <li>The flow hands the URL and title to the desktop flow</li>
+</ol>
+
+<p><strong>Why HTTP/API?</strong> The cloud flow talks to GitHub using HTTP actions (web requests). Each request is like sending a message that says:</p>
+
+<ul>
+    <li>GET: "Give me the unshared articles"</li>
+    <li>DELETE: "Remove the 'unshared' label from issue #42"</li>
+    <li>POST: "Add the 'shared' label to issue #42"</li>
+</ul>
+
+<h3><strong>Desktop Flow = The File Editor</strong></h3>
+
+<p>Built in Power Automate Desktop (the app on your PC), this flow:</p>
+
+<ol>
+    <li>Receives the article URL and title from the cloud flow</li>
+    <li>Opens your signature file: <code>C:\Users\YourName\AppData\Roaming\Microsoft\Signatures\your-signature.htm</code></li>
+    <li>Reads the entire file into memory</li>
+    <li>Uses regex (pattern matching) to find and delete the old article block (between <code>&lt;!--ARTICLE-START--&gt;</code> and <code>&lt;!--ARTICLE-END--&gt;</code> markers)</li>
+    <li>Builds new HTML containing the article link</li>
+    <li>Inserts it before the closing <code>&lt;/body&gt;</code> tag</li>
+    <li>Writes the updated file back to disk</li>
+</ol>
+
+<p><strong>Why markers?</strong> The HTML comment markers (<code>&lt;!--ARTICLE-START--&gt;</code> and <code>&lt;!--ARTICLE-END--&gt;</code>) act as anchors. Instead of trying to match complex HTML styles (which break easily), the flow just deletes everything between the markers and inserts new content. It's foolproof.</p>
+
+<hr>
+
+<h2>The Setup Journey (What You Just Did)</h2>
+
+<h3>Step 1: Prepare GitHub</h3>
+<ul>
+    <li>Create a private repository called <code>outlook-sig-articles</code></li>
+    <li>Create two labels: <code>unshared</code> and <code>shared</code></li>
+    <li>Add your first few articles as Issues</li>
+</ul>
+
+<h3>Step 2: Create the Cloud Flow</h3>
+<ul>
+    <li>Go to make.powerautomate.com</li>
+    <li>Create a "Scheduled cloud flow"</li>
+    <li>Set the recurrence: Every day at 5 AM</li>
+    <li>Add HTTP actions to talk to GitHub:
+        <ul>
+            <li>GET to fetch an unshared issue</li>
+            <li>DELETE to remove the "unshared" label</li>
+            <li>POST to add the "shared" label</li>
+        </ul>
+    </li>
+    <li>Add Compose actions to extract the URL, title, and issue number from GitHub's response</li>
+    <li>Add a condition to check if any articles exist (guard against empty results)</li>
+</ul>
+
+<h3>Step 3: Create the Desktop Flow</h3>
+<ul>
+    <li>Open Power Automate Desktop on your PC</li>
+    <li>Create a flow called "Update Outlook Signature"</li>
+    <li>Define two input variables: <code>ArticleURL</code> and <code>ArticleTitle</code></li>
+    <li>Add steps to:
+        <ul>
+            <li>Read your signature file from disk</li>
+            <li>Remove the old article block using regex</li>
+            <li>Build new article HTML</li>
+            <li>Insert it before <code>&lt;/body&gt;</code></li>
+            <li>Write the file back</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>Step 4: Connect Them</h3>
+<ul>
+    <li>In the cloud flow, add a "Run a desktop flow" action</li>
+    <li>Select your desktop flow</li>
+    <li>Map the input variables: feed the ArticleURL and ArticleTitle from the Compose steps</li>
+</ul>
+
+<h3>Step 5: Seed the Signature File</h3>
+<ul>
+    <li>Open your signature <code>.htm</code> file in Notepad</li>
+    <li>Add <code>&lt;!--ARTICLE-START--&gt;&lt;!--ARTICLE-END--&gt;</code> right before <code>&lt;/body&gt;</code></li>
+    <li>This is the one-time setup — the flow uses these markers every day</li>
+</ul>
+
+<hr>
+
+<h2>What Happens When It Runs</h2>
+
+<p><strong>Day 1 — 5:00 AM:</strong></p>
+<ul>
+    <li>Cloud flow wakes up, checks GitHub, finds Issue #1: "Remote Work Article"</li>
+    <li>Cloud flow removes "unshared" label, adds "shared" label</li>
+    <li>Cloud flow sends URL and title to desktop flow</li>
+    <li>Desktop flow reads signature file, inserts the article block, saves the file</li>
+    <li>You send an email — it includes: "I enjoyed this article and I think you will too! [Remote Work Article](https://example.com/..."</li>
+</ul>
+
+<p><strong>Day 2 — 5:00 AM:</strong></p>
+<ul>
+    <li>Cloud flow checks GitHub again</li>
+    <li>Issue #1 has the "shared" label, so it's skipped</li>
+    <li>Issue #2 is now the oldest "unshared" one, so it gets picked</li>
+    <li>Desktop flow removes the old article block and inserts the new one</li>
+    <li>Your next email shows: "I enjoyed this article and I think you will too! [New Article Title](https://example.com/..."</li>
+</ul>
+
+<p><strong>Day 3, 4, 5...</strong> — Same pattern continues, rotating through your library</p>
+
+<hr>
+
+<h2>Common Gotchas (What We Fixed)</h2>
+
+<h3>Problem 1: The Desktop Flow Didn't Show Up in the Dropdown</h3>
+<p>The cloud flow needs to see that the desktop flow has input variables defined. Without them, the flow won't show in the dropdown even if it exists. <strong>Solution</strong>: Define <code>ArticleURL</code> and <code>ArticleTitle</code> as input variables in the desktop flow.</p>
+
+<h3>Problem 2: The GitHub API Calls Returned 404 (Not Found)</h3>
+<p>The URL was supposed to have the issue number plugged in (like <code>/issues/42/labels/unshared</code>), but instead it was sending the literal expression text (like <code>/issues/first(body...)/labels</code>). <strong>Solution</strong>: Use <code>concat()</code> expressions to build the URL, which forces Power Automate to evaluate variables at runtime instead of treating them as literal text.</p>
+
+<h3>Problem 3: Running Out of Articles</h3>
+<p>If all articles are marked "shared," the GitHub API returns an empty list. The Compose step tries to call <code>first()</code> on an empty array and crashes. <strong>Solution</strong>: Add a Condition step that checks <code>length(body('Parse_JSON')) &gt; 0</code> and exits gracefully if there are no unshared articles.</p>
+
+<h3>Problem 4: The Old Article Didn't Get Removed</h3>
+<p>The original flow tried to match HTML styles with regex, which broke if the signature's HTML structure changed even slightly. <strong>Solution</strong>: Use HTML comment markers (<code>&lt;!--ARTICLE-START--&gt;</code> and <code>&lt;!--ARTICLE-END--&gt;</code>) as deterministic anchors that never change.</p>
+
+<hr>
+
+<h2>Daily Workflow — Adding New Articles</h2>
+
+<ol>
+    <li>Find an article you like</li>
+    <li>Go to your GitHub repo → <strong>Issues</strong> → <strong>New issue</strong></li>
+    <li><strong>Title</strong>: Paste the article headline</li>
+    <li><strong>Body</strong>: Paste just the URL</li>
+    <li><strong>Labels</strong>: Select <code>unshared</code></li>
+    <li>Click <strong>Submit new issue</strong></li>
+</ol>
+
+<p>That's it. The flow handles the rest tomorrow morning. Check the <code>shared</code> label filter to see your history of recommended articles.</p>
+
+<hr>
+
+<h2>Why This Design?</h2>
+
+<p><strong>Why split into Cloud + Desktop?</strong></p>
+<ul>
+    <li>The cloud flow runs on Microsoft's servers on a schedule, so it works even if your PC is asleep</li>
+    <li>The desktop flow only runs when needed (when there's actually an article to share)</li>
+    <li>The cloud flow handles all the "talking to GitHub" complexity</li>
+    <li>The desktop flow is simple — just read a file, edit it, write it back</li>
+</ul>
+
+<p><strong>Why GitHub Issues?</strong></p>
+<ul>
+    <li>Free storage for your article library</li>
+    <li>Built-in labels for status tracking</li>
+    <li>Simple, human-readable interface (no database to manage)</li>
+    <li>You can see your sharing history at a glance</li>
+</ul>
+
+<p><strong>Why HTML comment markers?</strong></p>
+<ul>
+    <li>They're invisible in the rendered signature</li>
+    <li>They're deterministic (never change)</li>
+    <li>They survive Outlook re-formatting</li>
+    <li>The regex pattern <code>&lt;!--ARTICLE-START--&gt;.*?&lt;!--ARTICLE-END--&gt;</code> will always find exactly what you want to replace</li>
+</ul>
+
+<hr>
+
+<h2>The Endgame</h2>
+
+<p>Every morning at 5 AM, without you lifting a finger:</p>
+
+<ul>
+    <li>A fresh article appears in your signature</li>
+    <li>Your colleagues see a thoughtful recommendation</li>
+    <li>The system tracks what you've shared</li>
+    <li>You build a routine of sharing valuable content</li>
+</ul>
+
+<p>It's automation in its purest form — set it up once, then forget about it.</p>
+
+</body>
+</html>
