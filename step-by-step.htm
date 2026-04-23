@@ -1,577 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Email Signature Updater - Complete Click-by-Click Guide</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      line-height: 1.6;
-      color: #1a1a1a;
-      background: #f5f3ee;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
-      padding-bottom: 2rem;
-      border-bottom: 2px solid #d1d5db;
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      color: #1a1a1a;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-    }
-
-    header .subtitle {
-      font-size: 1.25rem;
-      color: #6b6b6b;
-      margin-bottom: 0.5rem;
-      font-style: italic;
-    }
-
-    header .description {
-      font-size: 1rem;
-      color: #6b6b6b;
-    }
-
-    .section {
-      margin-bottom: 3rem;
-    }
-
-    h2 {
-      font-size: 1.8rem;
-      color: #1a1a1a;
-      margin-bottom: 1rem;
-      margin-top: 2rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 2px solid #0066ff;
-    }
-
-    h2:first-of-type {
-      margin-top: 0;
-    }
-
-    h3 {
-      font-size: 1.3rem;
-      color: #1a1a1a;
-      margin-top: 1.5rem;
-      margin-bottom: 0.75rem;
-      font-weight: 600;
-    }
-
-    p {
-      margin-bottom: 1rem;
-      color: #1a1a1a;
-      font-size: 0.95rem;
-    }
-
-    .step {
-      margin-left: 1.5rem;
-      margin-bottom: 0.75rem;
-      padding-left: 1.5rem;
-      position: relative;
-      line-height: 1.6;
-    }
-
-    .step::before {
-      content: attr(data-number);
-      position: absolute;
-      left: -1.2rem;
-      top: 0;
-      width: 1.5rem;
-      height: 1.5rem;
-      background: #0066ff;
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    .callout {
-      padding: 1.5rem;
-      border-left: 4px solid #0066ff;
-      background: #e8f0fe;
-      border-radius: 0 4px 4px 0;
-      margin: 1.5rem 0;
-    }
-
-    .callout.warning {
-      border-left-color: #f59e0b;
-      background: #fffbeb;
-    }
-
-    .callout.success {
-      border-left-color: #16a34a;
-      background: #f0fdf4;
-    }
-
-    .callout strong {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-size: 1rem;
-    }
-
-    .callout p {
-      margin: 0;
-      font-size: 0.9rem;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.5rem 0;
-      background: white;
-      border: 1px solid #d1d5db;
-      border-radius: 6px;
-      overflow: hidden;
-    }
-
-    th, td {
-      padding: 0.75rem 1rem;
-      text-align: left;
-      border-bottom: 1px solid #d1d5db;
-      font-size: 0.9rem;
-    }
-
-    th {
-      background: #f3f4f6;
-      font-weight: 600;
-      color: #1a1a1a;
-    }
-
-    tr:last-child td {
-      border-bottom: none;
-    }
-
-    code {
-      background: #f3f0ff;
-      color: #7c3aed;
-      padding: 0.2em 0.4em;
-      border-radius: 3px;
-      font-family: 'Courier New', monospace;
-      font-size: 0.9em;
-    }
-
-    .code-block {
-      background: #1e1e2e;
-      color: #cdd6f4;
-      padding: 1.5rem;
-      border-radius: 6px;
-      overflow-x: auto;
-      margin: 1rem 0;
-      font-family: 'Courier New', monospace;
-      font-size: 0.85rem;
-      line-height: 1.5;
-    }
-
-    .code-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      color: #6b6b6b;
-      margin-bottom: 0.5rem;
-      display: block;
-      letter-spacing: 0.05em;
-    }
-
-    .page-break {
-      page-break-after: always;
-      margin: 3rem 0;
-      padding: 2rem 0;
-      border-top: 2px dashed #d1d5db;
-    }
-
-    .toc {
-      background: white;
-      padding: 2rem;
-      border: 1px solid #d1d5db;
-      border-radius: 6px;
-      margin: 2rem 0;
-    }
-
-    .toc h3 {
-      margin-top: 0;
-    }
-
-    .toc ul {
-      list-style: none;
-    }
-
-    .toc li {
-      margin: 0.75rem 0;
-      padding-left: 1.5rem;
-    }
-
-    .toc a {
-      color: #0066ff;
-      text-decoration: none;
-    }
-
-    .toc a:hover {
-      text-decoration: underline;
-    }
-
-    .toc li::before {
-      content: "▸ ";
-      margin-left: -1.5rem;
-      margin-right: 0.5rem;
-      color: #0066ff;
-      font-weight: bold;
-    }
-
-    .part-header {
-      background: #e8f0fe;
-      padding: 2rem;
-      border-radius: 6px;
-      margin: 2rem 0 1.5rem 0;
-      border-left: 4px solid #0066ff;
-    }
-
-    .part-header h2 {
-      margin-top: 0;
-      border: none;
-      color: #0066ff;
-    }
-
-    .part-header p {
-      color: #1a1a1a;
-      font-size: 1rem;
-    }
-
-    .checklist {
-      background: white;
-      padding: 1.5rem;
-      border: 1px solid #d1d5db;
-      border-radius: 6px;
-      margin: 1.5rem 0;
-    }
-
-    .checklist-item {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 1rem;
-      padding: 0.75rem;
-      border-radius: 4px;
-      transition: background 0.2s;
-    }
-
-    .checklist-item:hover {
-      background: #f5f3ee;
-    }
-
-    .checklist-item input {
-      margin-right: 1rem;
-      margin-top: 0.25rem;
-      width: 20px;
-      height: 20px;
-      cursor: pointer;
-    }
-
-    .checklist-item label {
-      cursor: pointer;
-      flex: 1;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: #6b6b6b;
-      border-top: 2px solid #d1d5db;
-      margin-top: 3rem;
-      font-size: 0.9rem;
-    }
-
-    .emoji {
-      margin-right: 0.3rem;
-    }
-
-    @media print {
-      .page-break {
-        page-break-before: always;
-      }
-      body {
-        background: white;
-      }
-      .container {
-        max-width: 100%;
-        padding: 0;
-      }
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-      h2 {
-        font-size: 1.4rem;
-      }
-      .container {
-        padding: 1rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <!-- HEADER -->
-    <header>
-      <h1>Email Signature Updater</h1>
-      <p class="subtitle">Complete Click-by-Click Setup Guide</p>
-      <p class="description">No experience needed. No development knowledge required.</p>
-    </header>
-
-    <!-- TABLE OF CONTENTS -->
-    <div class="toc">
-      <h3><span class="emoji">📑</span> Table of Contents</h3>
-      <ul>
-        <li><a href="#prereqs">Before You Start — What You Need</a></li>
-        <li><a href="#part1">Part 1: GitHub Setup (15 minutes)</a></li>
-        <li><a href="#part2">Part 2: Cloud Flow (20 minutes)</a></li>
-        <li><a href="#part3">Part 3: Desktop Flow (15 minutes)</a></li>
-        <li><a href="#part4">Part 4: Connect the Flows (5 minutes)</a></li>
-        <li><a href="#part5">Part 5: Prepare Your Signature File (5 minutes)</a></li>
-        <li><a href="#part6">Part 6: Test Everything (10 minutes)</a></li>
-        <li><a href="#daily">Daily Use — How to Add Articles</a></li>
-        <li><a href="#troubleshoot">Troubleshooting</a></li>
-      </ul>
-    </div>
-
-    <!-- PREREQUISITES -->
-    <section class="section" id="prereqs">
-      <h2><span class="emoji">✓</span> Before You Start — What You Need</h2>
-      <p>You'll need four things ready. Check them off before starting:</p>
-
-      <div class="checklist">
-        <div class="checklist-item">
-          <input type="checkbox" id="check1">
-          <label for="check1"><strong>GitHub account</strong> (free at github.com)</label>
-        </div>
-        <div class="checklist-item">
-          <input type="checkbox" id="check2">
-          <label for="check2"><strong>Power Automate Premium license</strong> (or free trial)</label>
-        </div>
-        <div class="checklist-item">
-          <input type="checkbox" id="check3">
-          <label for="check3"><strong>Power Automate Desktop installed</strong> on your PC</label>
-        </div>
-        <div class="checklist-item">
-          <input type="checkbox" id="check4">
-          <label for="check4"><strong>Your Outlook signature file location</strong> (we'll find it together)</label>
-        </div>
-      </div>
-
-      <div class="callout">
-        <strong><span class="emoji">💡</span> Tip: GitHub Personal Access Token</strong>
-        <p>You'll create this in Part 1. It's like a password that lets Power Automate talk to GitHub. You only create it once and paste it in a few places.</p>
-      </div>
-    </section>
-
-    <!-- PART 1: GITHUB SETUP -->
-    <section class="section" id="part1">
-      <div class="part-header">
-        <h2><span class="emoji">📚</span> PART 1: GitHub Setup (15 minutes)</h2>
-        <p>This is where you'll store your articles as a library. Each article becomes an "Issue" and Power Automate will grab them automatically.</p>
-      </div>
-
-      <h3><span class="emoji">1️⃣</span> Step 1: Create a GitHub Account</h3>
-      <p><strong>If you already have a GitHub account, skip to Step 2.</strong></p>
-      <div class="step" data-number="1">Open a web browser and go to <strong>github.com</strong></div>
-      <div class="step" data-number="2">Click the <strong>Sign up</strong> button (top right)</div>
-      <div class="step" data-number="3">Enter your email address</div>
-      <div class="step" data-number="4">Create a password</div>
-      <div class="step" data-number="5">Choose a username</div>
-      <div class="step" data-number="6">Click <strong>Create account</strong></div>
-      <div class="step" data-number="7">Follow the email verification steps GitHub sends you</div>
-      <p><strong>Done!</strong> You now have a GitHub account.</p>
-
-      <h3><span class="emoji">2️⃣</span> Step 2: Create Your Article Repository</h3>
-      <p>A repository is like a folder where you'll store your articles.</p>
-      <div class="step" data-number="1">Go to <strong>github.com</strong> and log in</div>
-      <div class="step" data-number="2">Click the <strong>+</strong> icon (top right corner)</div>
-      <div class="step" data-number="3">Select <strong>New repository</strong></div>
-      <div class="step" data-number="4"><strong>Repository name:</strong> Type exactly <code>outlook-sig-articles</code></div>
-      <div class="step" data-number="5"><strong>Description:</strong> (optional) Type something like "Articles to share in my Outlook signature"</div>
-      <div class="step" data-number="6">Select <strong>Private</strong> (only you can see this)</div>
-      <div class="step" data-number="7">Click <strong>Create repository</strong></div>
-      <p><strong>Done!</strong> You now have a private repository for your articles.</p>
-
-      <h3><span class="emoji">🏷️</span> Step 3: Create Two Labels</h3>
-      <p>Labels are like color-coded tags. You'll use them to mark which articles you've already shared.</p>
-      <div class="step" data-number="1">In your <code>outlook-sig-articles</code> repository, click the <strong>Issues</strong> tab (near the top)</div>
-      <div class="step" data-number="2">On the right side, look for <strong>Labels</strong> and click it</div>
-      <div class="step" data-number="3">Click the <strong>New label</strong> button</div>
-      <div class="step" data-number="4"><strong>Label name:</strong> Type <code>unshared</code></div>
-      <div class="step" data-number="5"><strong>Color:</strong> Pick any green color (click the colored circle)</div>
-      <div class="step" data-number="6">Click <strong>Create label</strong></div>
-
-      <p style="margin-top: 1.5rem;">Now create the second label:</p>
-      <div class="step" data-number="7">Click <strong>New label</strong> again</div>
-      <div class="step" data-number="8"><strong>Label name:</strong> Type <code>shared</code></div>
-      <div class="step" data-number="9"><strong>Color:</strong> Pick any gray color</div>
-      <div class="step" data-number="10">Click <strong>Create label</strong></div>
-      <p><strong>Done!</strong> You now have two labels: <code>unshared</code> (for new articles) and <code>shared</code> (for articles already used).</p>
-
-      <h3><span class="emoji">📝</span> Step 4: Add Your First Article</h3>
-      <p>Now add some articles. Each one becomes an Issue in GitHub.</p>
-      <div class="step" data-number="1">In your <code>outlook-sig-articles</code> repo, click the <strong>Issues</strong> tab</div>
-      <div class="step" data-number="2">Click <strong>New issue</strong></div>
-      <div class="step" data-number="3"><strong>Title:</strong> Paste the article headline exactly as you want it to appear as a link<br><em>Example: <code>Why Remote Work Is Here to Stay</code></em></div>
-      <div class="step" data-number="4"><strong>Body:</strong> Paste ONLY the article URL. Nothing else. Just the URL on a blank line.<br><em>Example: <code>https://example.com/article-about-remote-work</code></em></div>
-      <div class="step" data-number="5">On the right side, find <strong>Labels</strong> and click it</div>
-      <div class="step" data-number="6">Select the <strong>unshared</strong> label (this marks it as "not yet shared")</div>
-      <div class="step" data-number="7">Click <strong>Submit new issue</strong></div>
-
-      <p><strong>Repeat this 3-5 more times</strong> so you have a backlog of articles. Each time:</p>
-      <ul style="margin-left: 2rem; margin-bottom: 1rem;">
-        <li>Create a new issue</li>
-        <li>Add the headline as the title</li>
-        <li>Add just the URL in the body</li>
-        <li>Apply the <code>unshared</code> label</li>
-      </ul>
-
-      <h3><span class="emoji">🔑</span> Step 5: Create Your GitHub Personal Access Token</h3>
-      <p>This is a special "password" that Power Automate will use to talk to GitHub. You'll paste this into the flow later.</p>
-      <div class="callout warning">
-        <strong><span class="emoji">⚠️</span> IMPORTANT: Copy this token carefully. You won't be able to see it again after you leave this page.</strong>
-      </div>
-
-      <div class="step" data-number="1">In GitHub, click your <strong>profile picture</strong> (top right corner)</div>
-      <div class="step" data-number="2">Click <strong>Settings</strong></div>
-      <div class="step" data-number="3">On the left sidebar, scroll down and click <strong>Developer settings</strong></div>
-      <div class="step" data-number="4">Click <strong>Personal access tokens</strong></div>
-      <div class="step" data-number="5">Click <strong>Fine-grained tokens</strong></div>
-      <div class="step" data-number="6">Click <strong>Generate new token</strong></div>
-      <div class="step" data-number="7"><strong>Token name:</strong> Type <code>outlook-signature-automation</code></div>
-      <div class="step" data-number="8"><strong>Expiration:</strong> Select a date far in the future (like next year)</div>
-      <div class="step" data-number="9">Under <strong>Repository access</strong>, select <strong>Only select repositories</strong></div>
-      <div class="step" data-number="10">Click the dropdown and select <strong>outlook-sig-articles</strong></div>
-      <div class="step" data-number="11">Scroll down to <strong>Permissions</strong></div>
-      <div class="step" data-number="12">Find <strong>Repository permissions</strong> → <strong>Issues</strong> → Set it to <strong>Read and write</strong></div>
-      <div class="step" data-number="13">Scroll to the bottom and click <strong>Generate token</strong></div>
-      <div class="step" data-number="14"><strong>COPY the token immediately</strong> (click the copy icon) and paste it into a text file or password manager</div>
-
-      <p><strong>Never share this token with anyone.</strong></p>
-
-      <div class="callout">
-        <strong><span class="emoji">📋</span> Save Your Token!</strong>
-        <p>You'll need to paste this token into the cloud flow in Part 2. Save it somewhere safe like a text file, password manager, or sticky note on your desk.</p>
-      </div>
-    </section>
-
-    <!-- PART 2: CLOUD FLOW -->
-    <section class="section" id="part2">
-      <div class="page-break"></div>
-
-      <div class="part-header">
-        <h2><span class="emoji">☁️</span> PART 2: Cloud Flow (20 minutes)</h2>
-        <p>The cloud flow is the "brain." It runs every morning at 5 AM, checks GitHub for articles, and tells your computer to update the signature.</p>
-      </div>
-
-      <h3><span class="emoji">1️⃣</span> Step 1: Open Power Automate Web</h3>
-      <div class="step" data-number="1">Open a web browser</div>
-      <div class="step" data-number="2">Go to <strong>make.powerautomate.com</strong></div>
-      <div class="step" data-number="3">Sign in with your <strong>work or school account</strong> (the one you use for Outlook)</div>
-      <div class="step" data-number="4">In the left sidebar, click <strong>My flows</strong></div>
-      <p>You're now in the Power Automate dashboard.</p>
-
-      <h3><span class="emoji">2️⃣</span> Step 2: Create a Scheduled Flow</h3>
-      <div class="step" data-number="1">Click <strong>+ New flow</strong> (top left)</div>
-      <div class="step" data-number="2">Select <strong>Scheduled cloud flow</strong></div>
-      <div class="step" data-number="3"><strong>Flow name:</strong> Type <code>Daily Article Signature Update</code></div>
-      <div class="step" data-number="4"><strong>Starting:</strong> Click the date field and pick tomorrow's date</div>
-      <div class="step" data-number="5"><strong>Repeat every:</strong> Set to <code>1</code> <code>Day</code></div>
-      <div class="step" data-number="6">Click <strong>Create</strong></div>
-      <p>You're now in the flow editor. This is where you build the steps.</p>
-
-      <h3><span class="emoji">3️⃣</span> Step 3: Configure the Schedule (Set 5 AM Daily)</h3>
-      <p>The first block is labeled "Recurrence." This controls when the flow runs.</p>
-      <div class="step" data-number="1">Click on the <strong>Recurrence</strong> block to expand it</div>
-      <div class="step" data-number="2">Set these values:
-        <ul style="margin-left: 1rem; margin-top: 0.5rem;">
-          <li><strong>Interval:</strong> <code>1</code></li>
-          <li><strong>Frequency:</strong> <code>Day</code></li>
-          <li><strong>Time zone:</strong> Select your time zone (e.g., "Eastern Standard Time")</li>
-          <li><strong>At these hours:</strong> <code>5</code> (for 5 AM)</li>
-          <li><strong>At these minutes:</strong> <code>0</code></li>
-        </ul>
-      </div>
-      <p>Now the flow will run every day at 5:00 AM.</p>
-
-      <h3><span class="emoji">4️⃣</span> Step 4: Add First HTTP Action (Get Articles from GitHub)</h3>
-      <p>This step asks GitHub: "Give me one article I haven't shared yet."</p>
-      <div class="step" data-number="1">Below the Recurrence block, click the <strong>+</strong> button</div>
-      <div class="step" data-number="2">Click <strong>Add an action</strong></div>
-      <div class="step" data-number="3">In the search box, type <code>HTTP</code></div>
-      <div class="step" data-number="4">Click <strong>HTTP</strong> (it has a blue globe icon)</div>
-
-      <p style="margin-top: 1rem;">Now you'll fill in the HTTP action:</p>
-      <div class="step" data-number="5"><strong>Method:</strong> Click the dropdown, select <code>GET</code></div>
-      <div class="step" data-number="6"><strong>URI:</strong> Click in the URI field and paste this exactly (replace <code>ScottPriestley</code> with your GitHub username):
-        <div class="code-block">https://api.github.com/repos/ScottPriestley/outlook-sig-articles/issues?labels=unshared&state=open&sort=created&direction=asc&per_page=1</div>
-      </div>
-      <div class="step" data-number="7">Scroll down and click <strong>Show advanced options</strong></div>
-      <div class="step" data-number="8">Under <strong>Headers</strong>, click in the first Key field</div>
-
-      <p style="margin-top: 1rem;">Now add three headers. For each header, click in the field and type:</p>
-
-      <table>
-        <tr>
-          <th>Header #</th>
-          <th>Key</th>
-          <th>Value</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td><code>Accept</code></td>
-          <td><code>application/vnd.github+json</code></td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td><code>Authorization</code></td>
-          <td><code>Bearer ghp_YOUR_TOKEN_HERE</code></td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td><code>User-Agent</code></td>
-          <td><code>PowerAutomate</code></td>
-        </tr>
-      </table>
-
-      <p><strong>For the Authorization header:</strong> Replace <code>ghp_YOUR_TOKEN_HERE</code> with the GitHub token you copied in Part 1, Step 5.</p>
-      <p><em>Example: <code>Bearer ghp_xyzABC123DEF456GHI789</code></em></p>
-
-      <div class="callout">
-        <strong><span class="emoji">ℹ️</span> What This Step Does</strong>
-        <p>It sends a message to GitHub that says: "Hi GitHub, give me one open issue with the label 'unshared', sorted by oldest first." GitHub sends back the article info.</p>
-      </div>
-
-      <h3><span class="emoji">5️⃣</span> Step 5: Parse the Response from GitHub</h3>
-      <p>GitHub sent back data. This step teaches Power Automate how to read it.</p>
-      <div class="step" data-number="1">Below the HTTP action, click <strong>+</strong></div>
-      <div class="step" data-number="2">Click <strong>Add an action</strong></div>
-      <div class="step" data-number="3">Search for <code>Parse JSON</code> → click it</div>
-      <div class="step" data-number="4"><strong>Content:</strong> Click in the box, then in the panel on the right, select <strong>Body</strong></div>
-      <div class="step" data-number="5">Now paste this schema (this tells Power Automate what format the data is in):
-        <div class="code-block">{
+# Email Signature Updater
+
+*Complete Click-by-Click Setup Guide*
+*No experience needed. No development knowledge required.*
+
+---
+
+## 📑 Table of Contents
+
+* [Before You Start — What You Need](#before-you-start--what-you-need)
+* [Part 1: GitHub Setup](#part-1-github-setup)
+* [Part 2: Cloud Flow](#part-2-cloud-flow)
+* [Part 3: Desktop Flow](#part-3-desktop-flow)
+* [Part 4: Connect the Flows](#part-4-connect-the-flows)
+* [Part 5: Prepare Your Signature File](#part-5-prepare-your-signature-file)
+* [Part 6: Test Everything](#part-6-test-everything)
+* [Daily Use](#daily-use--how-to-add-articles)
+* [Troubleshooting](#troubleshooting)
+
+---
+
+## ✓ Before You Start — What You Need
+
+* [ ] **GitHub account**
+* [ ] **Power Automate Premium license**
+* [ ] **Power Automate Desktop installed**
+* [ ] **Outlook signature file location**
+
+> 💡 **Tip:** You'll create a GitHub token later—save it when you do.
+
+---
+
+# 📚 PART 1: GitHub Setup
+
+## 1️⃣ Create Account
+
+Go to `github.com` → Sign up → verify email
+
+---
+
+## 2️⃣ Create Repository
+
+* Name: `outlook-sig-articles`
+* Visibility: Private
+
+---
+
+## 🏷️ Labels
+
+Create:
+
+* `unshared` (green)
+* `shared` (gray)
+
+---
+
+## 📝 Add Articles
+
+Each article = Issue
+
+* Title → headline
+* Body → URL only
+* Label → `unshared`
+
+---
+
+## 🔑 Token
+
+Create a **fine-grained personal access token**
+
+* Repo access: `outlook-sig-articles`
+* Permissions: Issues (Read & Write)
+
+---
+
+# ☁️ PART 2: Cloud Flow
+
+## Schedule
+
+* Runs daily at **5 AM**
+
+---
+
+## HTTP Request
+
+```bash
+https://api.github.com/repos/USERNAME/outlook-sig-articles/issues?labels=unshared&state=open&sort=created&direction=asc&per_page=1
+```
+
+Headers:
+
+| Key           | Value                       |
+| ------------- | --------------------------- |
+| Accept        | application/vnd.github+json |
+| Authorization | Bearer YOUR_TOKEN           |
+| User-Agent    | PowerAutomate               |
+
+---
+
+## Parse JSON
+
+```json
+{
   "type": "array",
   "items": {
     "type": "object",
@@ -581,372 +110,97 @@
       "body": { "type": "string" }
     }
   }
-}</div>
-      </div>
-      <div class="step" data-number="6">Click outside the field when done</div>
+}
+```
 
-      <p>You've now told Power Automate how to read GitHub's response.</p>
+---
 
-      <div class="callout success">
-        <strong><span class="emoji">✅</span> Progress Check</strong>
-        <p>You now have two actions: 1) Get articles from GitHub, 2) Read the response. The next steps will extract the URL and tell your computer to update the signature. Due to space, I've shown the critical first steps. For the remaining steps (Compose actions, Condition, HTTP label actions, and Run desktop flow), follow the same pattern: click <strong>+</strong>, add the action, fill in the fields exactly as shown in the markdown guide.</p>
-      </div>
+# 🖥️ PART 3: Desktop Flow
 
-      <div class="callout">
-        <strong><span class="emoji">📝</span> Continue in Your Browser</strong>
-        <p>For steps 6-12 of the cloud flow (Compose actions, Condition, Label removal/addition, and connecting the desktop flow), refer to the markdown guide "COMPLETE-CLICK-BY-CLICK-GUIDE.md" for complete details. The pattern is identical: click +, add action, fill in fields.</p>
-      </div>
-    </section>
+## Variables
 
-    <!-- PART 3: DESKTOP FLOW -->
-    <section class="section" id="part3">
-      <div class="page-break"></div>
+* `ArticleURL`
+* `ArticleTitle`
 
-      <div class="part-header">
-        <h2><span class="emoji">🖥️</span> PART 3: Desktop Flow (15 minutes)</h2>
-        <p>The desktop flow runs on your PC. It receives the article URL from the cloud flow and updates your Outlook signature file.</p>
-      </div>
+---
 
-      <h3><span class="emoji">1️⃣</span> Step 1: Open Power Automate Desktop</h3>
-      <div class="step" data-number="1">Click the Windows <strong>Start</strong> menu</div>
-      <div class="step" data-number="2">Search for <strong>Power Automate</strong> or <strong>Power Automate Desktop</strong></div>
-      <div class="step" data-number="3">Click to open it</div>
-      <div class="step" data-number="4">Sign in with your <strong>work or school account</strong> (same as the cloud flow)</div>
-      <div class="step" data-number="5">Click <strong>+ New flow</strong></div>
-      <div class="step" data-number="6"><strong>Flow name:</strong> Type <code>Update Outlook Signature</code></div>
-      <div class="step" data-number="7">Click <strong>Create</strong></div>
-      <p>You're now in the desktop flow designer.</p>
+## File Path
 
-      <h3><span class="emoji">2️⃣</span> Step 2: Create Input Variables</h3>
-      <p>Input variables let the cloud flow pass the article URL and title into this desktop flow.</p>
-      <div class="step" data-number="1">On the right side of the designer, look for the <strong>Variables</strong> pane (or click the <strong>{x}</strong> icon)</div>
-      <div class="step" data-number="2">Find the <strong>Input</strong> section</div>
-      <div class="step" data-number="3">Click the <strong>+</strong> to add a new input variable</div>
-      <div class="step" data-number="4"><strong>Variable name:</strong> <code>ArticleURL</code></div>
-      <div class="step" data-number="5"><strong>Data type:</strong> <code>Text</code></div>
-      <div class="step" data-number="6">Click <strong>Save</strong></div>
-      <div class="step" data-number="7">Click <strong>+</strong> again to add another input</div>
-      <div class="step" data-number="8"><strong>Variable name:</strong> <code>ArticleTitle</code></div>
-      <div class="step" data-number="9"><strong>Data type:</strong> <code>Text</code></div>
-      <div class="step" data-number="10">Click <strong>Save</strong></div>
+```
+C:\Users\YOURNAME\AppData\Roaming\Microsoft\Signatures\your-signature.htm
+```
 
-      <p>Now you have two input variables. The cloud flow will pass the URL and title through these.</p>
+---
 
-      <h3><span class="emoji">3️⃣</span> Step 3: Add Step 1 - Set the Signature File Path</h3>
-      <div class="step" data-number="1">In the flow designer, click <strong>New</strong> (top left)</div>
-      <div class="step" data-number="2">In the <strong>Actions</strong> panel on the left, expand <strong>Variables</strong></div>
-      <div class="step" data-number="3">Drag <strong>Set variable</strong> into the workspace</div>
-      <div class="step" data-number="4"><strong>Variable name:</strong> <code>SignatureFilePath</code></div>
-      <div class="step" data-number="5"><strong>Value:</strong> Paste this path:
-        <div class="code-block">C:\Users\ScottPriestley\AppData\Roaming\Microsoft\Signatures\work-sig (spriestley@hso.com).htm</div>
-        <em>(Replace the username and signature file name with yours)</em>
-      </div>
+## Remove Old Article
 
-      <h3><span class="emoji">4️⃣</span> Step 4: Add Step 2 - Read Your Signature File</h3>
-      <div class="step" data-number="1">Click <strong>New</strong> (or the + button)</div>
-      <div class="step" data-number="2">In the Actions panel, expand <strong>File</strong></div>
-      <div class="step" data-number="3">Drag <strong>Read text from file</strong> into the workspace</div>
-      <div class="step" data-number="4"><strong>File path:</strong> Type <code>%SignatureFilePath%</code></div>
-      <div class="step" data-number="5"><strong>Store content as:</strong> Select <code>Single text value</code></div>
-      <div class="step" data-number="6"><strong>Output variable:</strong> Type <code>CurrentSignature</code></div>
-      <div class="step" data-number="7"><strong>Encoding:</strong> Select <code>UTF-8</code></div>
+```
+<!--ARTICLE-START-->.*?<!--ARTICLE-END-->
+```
 
-      <h3><span class="emoji">5️⃣</span> Step 5: Add Step 3 - Remove Old Article Block</h3>
-      <p>This step finds and deletes yesterday's article so we can add today's.</p>
-      <div class="step" data-number="1">Click <strong>New</strong></div>
-      <div class="step" data-number="2">In the Actions panel, expand <strong>Text</strong></div>
-      <div class="step" data-number="3">Drag <strong>Replace text</strong> into the workspace</div>
-      <div class="step" data-number="4"><strong>Text to parse:</strong> <code>%CurrentSignature%</code></div>
-      <div class="step" data-number="5"><strong>Text to find:</strong> <code><!--ARTICLE-START-->.*?<!--ARTICLE-END--></code></div>
-      <div class="step" data-number="6"><strong>Replace with:</strong> (leave this field <strong>completely empty</strong>)</div>
-      <div class="step" data-number="7"><strong>Use regular expressions:</strong> Toggle this <strong>ON</strong> (blue)</div>
-      <div class="step" data-number="8"><strong>Output variable:</strong> Type <code>SignatureWithoutArticle</code></div>
+---
 
-      <h3><span class="emoji">6️⃣</span> Step 6: Add Step 4 - Build the Article HTML</h3>
-      <div class="step" data-number="1">Click <strong>New</strong></div>
-      <div class="step" data-number="2">Drag <strong>Set variable</strong> into the workspace</div>
-      <div class="step" data-number="3"><strong>Variable name:</strong> <code>ArticleHTML</code></div>
-      <div class="step" data-number="4"><strong>Value:</strong> Paste this exactly:
-        <div class="code-block"><!--ARTICLE-START--><p style="margin: 10px 0 0 0; font-family: Segoe UI, sans-serif; font-size: 10pt;"><span style="font-weight: bold;">I enjoyed this article and I think you will too!</span><br><a href="%ArticleURL%" style="color: #0563C1;">%ArticleTitle%</a></p><!--ARTICLE-END--></div>
-      </div>
+## Insert HTML
 
-      <h3><span class="emoji">7️⃣</span> Step 7: Add Step 5 - Insert New Article into Signature</h3>
-      <div class="step" data-number="1">Click <strong>New</strong></div>
-      <div class="step" data-number="2">Drag <strong>Replace text</strong> into the workspace</div>
-      <div class="step" data-number="3"><strong>Text to parse:</strong> <code>%SignatureWithoutArticle%</code></div>
-      <div class="step" data-number="4"><strong>Text to find:</strong> <code>&lt;/body&gt;</code></div>
-      <div class="step" data-number="5"><strong>Replace with:</strong> <code>%ArticleHTML%&lt;/body&gt;</code></div>
-      <div class="step" data-number="6"><strong>Use regular expressions:</strong> Toggle <strong>OFF</strong></div>
-      <div class="step" data-number="7"><strong>Output variable:</strong> Type <code>NewSignature</code></div>
+```html
+<!--ARTICLE-START--><p style="margin: 10px 0 0 0; font-family: Segoe UI, sans-serif; font-size: 10pt;"><span style="font-weight: bold;">I enjoyed this article and I think you will too!</span><br><a href="%ArticleURL%" style="color: #0563C1;">%ArticleTitle%</a></p><!--ARTICLE-END-->
+```
 
-      <h3><span class="emoji">8️⃣</span> Step 8: Add Step 6 - Save the Updated Signature</h3>
-      <div class="step" data-number="1">Click <strong>New</strong></div>
-      <div class="step" data-number="2">In the Actions panel, expand <strong>File</strong></div>
-      <div class="step" data-number="3">Drag <strong>Write text to file</strong> into the workspace</div>
-      <div class="step" data-number="4"><strong>File path:</strong> <code>%SignatureFilePath%</code></div>
-      <div class="step" data-number="5"><strong>Text to write:</strong> <code>%NewSignature%</code></div>
-      <div class="step" data-number="6"><strong>If file exists:</strong> Select <code>Overwrite existing content</code></div>
-      <div class="step" data-number="7"><strong>Encoding:</strong> Select <code>UTF-8</code></div>
+---
 
-      <h3><span class="emoji">9️⃣</span> Step 9: Save the Desktop Flow</h3>
-      <div class="step" data-number="1">Press <strong>Ctrl+S</strong> or click the save icon (top left)</div>
-      <div class="step" data-number="2">Wait for it to save completely</div>
+# 🔗 PART 4: Connect Flows
 
-      <p><strong>Done!</strong> Your desktop flow is complete.</p>
-    </section>
+* Add **Run Desktop Flow**
+* Map:
 
-    <!-- PART 4: CONNECT -->
-    <section class="section" id="part4">
-      <div class="page-break"></div>
+  * URL → `ArticleURL`
+  * Title → `ArticleTitle`
 
-      <div class="part-header">
-        <h2><span class="emoji">🔗</span> PART 4: Connect the Flows (5 minutes)</h2>
-        <p>Now tell the cloud flow to use the desktop flow.</p>
-      </div>
+---
 
-      <h3><span class="emoji">1️⃣</span> Step 1: Go Back to the Cloud Flow</h3>
-      <div class="step" data-number="1">Open a web browser and go to <strong>make.powerautomate.com</strong></div>
-      <div class="step" data-number="2">Click <strong>My flows</strong></div>
-      <div class="step" data-number="3">Click on <strong>Daily Article Signature Update</strong> (your cloud flow)</div>
+# ✏️ PART 5: Signature Setup
 
-      <h3><span class="emoji">2️⃣</span> Step 2: Add the Desktop Flow Action</h3>
-      <p>In the cloud flow, in the "If yes" branch:</p>
-      <div class="step" data-number="1">Click <strong>+</strong> (below "Add Shared Label")</div>
-      <div class="step" data-number="2">Click <strong>Add an action</strong></div>
-      <div class="step" data-number="3">Search for <code>Desktop flows</code> or <code>Power Automate for desktop</code></div>
-      <div class="step" data-number="4">Click <strong>Run a flow built with Power Automate for desktop</strong></div>
-      <div class="step" data-number="5"><strong>Desktop flow:</strong> Click the dropdown and select <code>Update Outlook Signature</code></div>
-      <div class="step" data-number="6"><strong>Run mode:</strong> Select <code>Attended (runs when you're signed in)</code></div>
+Add before `</body>`:
 
-      <h3><span class="emoji">3️⃣</span> Step 3: Map the Input Variables</h3>
-      <p>Two input fields should appear.</p>
-      <p><strong>For the first input (ArticleURL):</strong></p>
-      <div class="step" data-number="1">Click in the first field</div>
-      <div class="step" data-number="2">In the panel on the right, find and click <strong>Outputs</strong> from <strong>Compose - ArticleURL</strong></div>
+```html
+<!--ARTICLE-START--><!--ARTICLE-END-->
+```
 
-      <p style="margin-top: 1.5rem;"><strong>For the second input (ArticleTitle):</strong></p>
-      <div class="step" data-number="1">Click in the second field</div>
-      <div class="step" data-number="2">Click <strong>Outputs</strong> from <strong>Compose - ArticleTitle</strong></div>
+---
 
-      <h3><span class="emoji">4️⃣</span> Step 4: Save the Cloud Flow</h3>
-      <div class="step" data-number="1">Click <strong>Save</strong> (top right)</div>
-      <div class="step" data-number="2">Wait for the save to complete</div>
+# 🧪 PART 6: Testing
 
-      <p><strong>Excellent!</strong> The cloud and desktop flows are now connected.</p>
-    </section>
+* Run flow manually
+* Check GitHub labels
+* Check signature file
+* Test in Outlook
 
-    <!-- PART 5: SIGNATURE SETUP -->
-    <section class="section" id="part5">
-      <div class="page-break"></div>
+---
 
-      <div class="part-header">
-        <h2><span class="emoji">✏️</span> PART 5: Prepare Your Signature File (5 minutes)</h2>
-        <p>You need to add special HTML markers to your signature file once. The flow will use these to find where to insert the article.</p>
-      </div>
+# 📅 Daily Use
 
-      <h3><span class="emoji">1️⃣</span> Step 1: Find Your Signature File</h3>
-      <div class="step" data-number="1">Press <strong>Windows key + R</strong> (opens the Run dialog)</div>
-      <div class="step" data-number="2">Paste this path:
-        <div class="code-block">C:\Users\ScottPriestley\AppData\Roaming\Microsoft\Signatures</div>
-      </div>
-      <div class="step" data-number="3">Press <strong>Enter</strong></div>
-      <div class="step" data-number="4">Look for a file called <code>work-sig (spriestley@hso.com).htm</code> (your signature file name may differ)</div>
+1. Create GitHub issue
+2. Add headline + URL
+3. Label `unshared`
 
-      <h3><span class="emoji">2️⃣</span> Step 2: Edit the File</h3>
-      <div class="step" data-number="1">Right-click the signature file</div>
-      <div class="step" data-number="2">Select <strong>Open with</strong> → <strong>Notepad</strong></div>
-      <div class="step" data-number="3">You'll see HTML code. Don't be intimidated—just look for <code>&lt;/body&gt;</code> at the very end.</div>
-      <div class="step" data-number="4">Use <strong>Ctrl+F</strong> to find <code>&lt;/body&gt;</code></div>
-      <div class="step" data-number="5">Click just <strong>before</strong> <code>&lt;/body&gt;</code> (to the left of it)</div>
-      <div class="step" data-number="6">Type this exactly:
-        <div class="code-block"><!--ARTICLE-START--><!--ARTICLE-END--></div>
-      </div>
-      <div class="step" data-number="7">Press <strong>Ctrl+S</strong> to save</div>
-      <div class="step" data-number="8">Close Notepad</div>
+Done—updates automatically.
 
-      <p><strong>Done!</strong> You've added the markers. The flow will use these every day to know where to insert the article.</p>
-    </section>
+---
 
-    <!-- PART 6: TESTING -->
-    <section class="section" id="part6">
-      <div class="page-break"></div>
+# 🔧 Troubleshooting
 
-      <div class="part-header">
-        <h2><span class="emoji">🧪</span> PART 6: Test Everything (10 minutes)</h2>
-        <p>Let's make sure everything works before we rely on it.</p>
-      </div>
+**401 error** → token issue
+**404 error** → repo/username wrong
+**No update** → PC asleep or Outlook cached
 
-      <h3><span class="emoji">1️⃣</span> Step 1: Test the Cloud Flow</h3>
-      <div class="step" data-number="1">Go to <strong>make.powerautomate.com</strong> → <strong>My flows</strong></div>
-      <div class="step" data-number="2">Click <strong>Daily Article Signature Update</strong></div>
-      <div class="step" data-number="3">Click <strong>Test</strong> (top right)</div>
-      <div class="step" data-number="4">Select <strong>Manually</strong> → <strong>Test</strong></div>
-      <div class="step" data-number="5">The flow will run. Watch the steps:
-        <ul style="margin-left: 1rem; margin-top: 0.5rem;">
-          <li>Each step should turn <strong>green</strong> (success)</li>
-          <li>If any step turns <strong>red</strong> (error), click on it to see what went wrong</li>
-        </ul>
-      </div>
+---
 
-      <p>If you get errors about the GitHub token or API, double-check that:</p>
-      <ul style="margin-left: 2rem;">
-        <li>Your GitHub token is correct and pasted with <code>Bearer</code> at the front</li>
-        <li>Your GitHub username is spelled correctly in the URI</li>
-        <li>Your repository name is spelled correctly</li>
-      </ul>
+# 🎉 Done
 
-      <h3><span class="emoji">2️⃣</span> Step 2: Check GitHub</h3>
-      <div class="step" data-number="1">Go to your GitHub repo → <strong>Issues</strong></div>
-      <div class="step" data-number="2">Look at your first article</div>
-      <div class="step" data-number="3">It should now have <strong>two labels</strong>: <code>unshared</code> should be gone, and <code>shared</code> should be there</div>
-      <div class="step" data-number="4">If the labels didn't change, the flow didn't run successfully. Check the error in Step 1.</div>
+Every day:
 
-      <h3><span class="emoji">3️⃣</span> Step 3: Check Your Signature File</h3>
-      <div class="step" data-number="1">Open File Explorer</div>
-      <div class="step" data-number="2">Go to: <code>C:\Users\ScottPriestley\AppData\Roaming\Microsoft\Signatures</code></div>
-      <div class="step" data-number="3">Right-click your signature file → <strong>Open with</strong> → <strong>Notepad</strong></div>
-      <div class="step" data-number="4">Use <strong>Ctrl+F</strong> to search for your article URL</div>
-      <div class="step" data-number="5">You should see it between the markers you added</div>
-      <div class="step" data-number="6">Close Notepad</div>
+* Pulls article
+* Updates signature
+* Marks as shared
 
-      <h3><span class="emoji">4️⃣</span> Step 4: Test in Outlook</h3>
-      <div class="step" data-number="1">Open <strong>Outlook</strong></div>
-      <div class="step" data-number="2">Click <strong>New Email</strong> (or <strong>New Message</strong>)</div>
-      <div class="step" data-number="3">Your signature should appear at the bottom</div>
-      <div class="step" data-number="4">You should see the article link: <em>"I enjoyed this article and I think you will too! [Article Title]"</em></div>
-      <div class="step" data-number="5">The article title should be clickable and point to the correct URL</div>
-
-      <div class="callout">
-        <strong><span class="emoji">⚠️</span> Outlook Caches Signatures</strong>
-        <p>If you don't see the article, Outlook sometimes caches old signatures. Close Outlook completely (not just the window—exit the app). Reopen Outlook and create a new email. The signature should update.</p>
-      </div>
-    </section>
-
-    <!-- DAILY USE -->
-    <section class="section" id="daily">
-      <div class="page-break"></div>
-      <h2><span class="emoji">📅</span> Daily Use — How to Add Articles</h2>
-      <p>Once everything is working, sharing an article is super simple:</p>
-
-      <div class="step" data-number="1">Find an article you like</div>
-      <div class="step" data-number="2">Go to your GitHub repo → <strong>Issues</strong> → <strong>New issue</strong></div>
-      <div class="step" data-number="3"><strong>Title:</strong> Paste the article headline (what you want to show as the link text)</div>
-      <div class="step" data-number="4"><strong>Body:</strong> Paste ONLY the article URL</div>
-      <div class="step" data-number="5">On the right, click <strong>Labels</strong> → select <code>unshared</code></div>
-      <div class="step" data-number="6">Click <strong>Submit new issue</strong></div>
-
-      <p><strong>That's it!</strong> Tomorrow morning at 5 AM, your signature will rotate to show this article automatically.</p>
-
-      <div class="callout success">
-        <strong><span class="emoji">✨</span> Daily Routine</strong>
-        <p>Once the flow is running, you just need to keep adding articles as you find them. The flow handles the rest every morning. Check the <code>shared</code> label filter to see your history of recommended articles.</p>
-      </div>
-    </section>
-
-    <!-- TROUBLESHOOTING -->
-    <section class="section" id="troubleshoot">
-      <div class="page-break"></div>
-      <h2><span class="emoji">🔧</span> Troubleshooting</h2>
-
-      <h3>❌ "The cloud flow test failed with '401 Unauthorized'"</h3>
-      <p>Your GitHub token is wrong or expired.</p>
-      <ul style="margin-left: 2rem;">
-        <li>Create a new token in GitHub following Part 1, Step 5</li>
-        <li>Copy the new token</li>
-        <li>Update the Authorization header in the HTTP steps of your cloud flow</li>
-      </ul>
-
-      <h3>❌ "The cloud flow test failed with '404 Not Found'"</h3>
-      <p>The GitHub API can't find the repository.</p>
-      <ul style="margin-left: 2rem;">
-        <li>Check that your GitHub username in the URI is spelled correctly</li>
-        <li>Check that your repository is spelled correctly (<code>outlook-sig-articles</code>)</li>
-        <li>Make sure the token is valid</li>
-      </ul>
-
-      <h3>❌ "The desktop flow didn't run"</h3>
-      <p>Your PC might have been asleep or locked.</p>
-      <ul style="margin-left: 2rem;">
-        <li>Make sure your PC is awake and you're signed in</li>
-        <li>Run the cloud flow manually again</li>
-        <li>The desktop flow must run when attended (you're signed in)</li>
-      </ul>
-
-      <h3>❌ "The article didn't appear in my signature"</h3>
-      <ul style="margin-left: 2rem;">
-        <li>Outlook caches signatures. Close Outlook completely and reopen it.</li>
-        <li>Create a new email (not a reply) to see the updated signature.</li>
-        <li>Check that the signature file was actually updated (open it in Notepad).</li>
-      </ul>
-
-      <h3>❌ "The old article is still showing"</h3>
-      <ul style="margin-left: 2rem;">
-        <li>Check that the comment markers (<code>&lt;!--ARTICLE-START--&gt;</code> and <code>&lt;!--ARTICLE-END--&gt;</code>) are in your signature file</li>
-        <li>Make sure there are no extra spaces inside the markers</li>
-        <li>Check that the regex in the "Remove old article block" step is exactly: <code>&lt;!--ARTICLE-START--&gt;.*?&lt;!--ARTICLE-END--&gt;</code></li>
-      </ul>
-
-      <div class="callout">
-        <strong><span class="emoji">💡</span> Questions?</strong>
-        <p>If something doesn't work, check the troubleshooting section above. The most common issues are typos in the URLs or an expired/incorrect GitHub token. Double-check those first.</p>
-      </div>
-    </section>
-
-    <!-- FINALE -->
-    <section class="section">
-      <div class="page-break"></div>
-      <h2><span class="emoji">🎉</span> You're Done!</h2>
-
-      <p style="font-size: 1.1rem; font-weight: 500; margin: 2rem 0;">Once the flow runs the first time and you test it, you can forget about it.</p>
-
-      <p>Every morning at 5 AM:</p>
-      <ol style="margin-left: 2rem; margin-bottom: 2rem;">
-        <li>The cloud flow wakes up</li>
-        <li>Checks GitHub for unshared articles</li>
-        <li>Grabs the oldest one</li>
-        <li>Tells your desktop to update the signature</li>
-        <li>Removes the "unshared" label, adds "shared"</li>
-        <li>Your next email includes the new article</li>
-      </ol>
-
-      <p style="font-size: 1.05rem;">All automatic. All hands-free.</p>
-
-      <div class="callout success" style="margin-top: 2rem;">
-        <strong><span class="emoji">✨</span> Share, Help, Build</strong>
-        <p>Share articles, help your colleagues discover great reads, and build a routine of thoughtful sharing. Every morning, a new recommendation goes out automatically. Set it and forget it.</p>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-      <p><strong>Email Signature Updater</strong> — Complete Click-by-Click Guide</p>
-      <p>Created to make automation accessible to everyone, regardless of technical background.</p>
-    </footer>
-  </div>
-
-  <script>
-    // Make checkboxes actually work
-    document.querySelectorAll('.checklist-item input').forEach(checkbox => {
-      checkbox.addEventListener('change', function() {
-        if (this.checked) {
-          this.closest('.checklist-item').style.opacity = '0.6';
-        } else {
-          this.closest('.checklist-item').style.opacity = '1';
-        }
-      });
-    });
-
-    // Smooth scroll for TOC links
-    document.querySelectorAll('.toc a').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
-  </script>
-</body>
-</html>
-
+Fully automated.
