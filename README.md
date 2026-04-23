@@ -189,3 +189,5 @@ Your colleagues see a thoughtful recommendation
 The system tracks what you've shared
 You build a routine of sharing valuable content
 It's automation in its purest form — set it up once, then forget about it.
+
+If you want to see the Step-by-Step process - click here https://github.com/ScottPriestley/email-signature-updater/blob/main/step-by-step.md
